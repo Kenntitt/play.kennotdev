@@ -210,13 +210,13 @@ export default function App() {
   };
 
   const s = {
-    root: { fontFamily: "system-ui,-apple-system,sans-serif", background: t.bg, color: t.text, minHeight: "100vh", display: "flex", flexDirection: "column", transition: "background 0.3s,color 0.3s", userSelect: "none" },
-    topBar: { background: t.sidebar, borderBottom: `1px solid ${t.border}`, padding: "0 16px", height: "60px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "10px", position: "sticky", top: 0, zIndex: 100 },
+    root: { fontFamily: "system-ui,-apple-system,sans-serif", background: t.bg, color: t.text, minHeight: "100vh", display: "flex", flexDirection: "column", transition: "background 0.3s,color 0.3s", userSelect: "none", width: "100vw", maxWidth: "100vw", overflowX: "hidden", position: "relative" },
+    topBar: { background: t.sidebar, borderBottom: `1px solid ${t.border}`, padding: "0 16px", height: "60px", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "10px", position: "sticky", top: 0, zIndex: 100, width: "100%", boxSizing: "border-box" },
     logo: { display: "flex", alignItems: "center", gap: "7px", color: t.accent, fontWeight: 800, fontSize: "1.1rem", letterSpacing: "-0.02em", flexShrink: 0 },
-    searchBar: { display: "flex", alignItems: "center", background: t.input, border: `1px solid ${t.border}`, borderRadius: "500px", padding: "0 14px", gap: "8px", flex: 1, maxWidth: "460px", height: "40px" },
+    searchBar: { display: "flex", alignItems: "center", background: t.input, border: `1px solid ${t.border}`, borderRadius: "500px", padding: "0 14px", gap: "8px", flex: 1, minWidth: 0, height: "40px" },
     searchInput: { background: "transparent", border: "none", outline: "none", color: t.text, fontSize: "0.875rem", flex: 1, fontFamily: "inherit" },
     themeBtn: { background: t.hover, border: `1px solid ${t.border}`, borderRadius: "50%", width: "36px", height: "36px", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: t.sub, flexShrink: 0 },
-    main: { flex: 1, padding: "20px 16px", maxWidth: "900px", width: "100%", margin: "0 auto", paddingBottom: currentTrack ? "110px" : "20px" },
+    main: { flex: 1, padding: "20px 16px", width: "100%", boxSizing: "border-box", paddingBottom: currentTrack ? "110px" : "20px" },
     tabs: { display: "flex", gap: "6px", marginBottom: "20px", flexWrap: "wrap" },
     tab: (a) => ({ padding: "7px 16px", borderRadius: "500px", fontWeight: 700, fontSize: "0.78rem", cursor: "pointer", background: a ? t.text : "transparent", color: a ? (dark ? "#000" : "#fff") : t.sub, border: `1px solid ${a ? t.text : t.border}`, transition: "all 0.2s" }),
     grid: { display: "grid", gridTemplateColumns: "repeat(auto-fill,minmax(min(100%,160px),1fr))", gap: "12px" },
@@ -236,11 +236,11 @@ export default function App() {
     controlBtns: { display: "flex", alignItems: "center", gap: "18px", color: t.sub },
     playBtn: { width: "40px", height: "40px", borderRadius: "50%", background: t.text, border: "none", display: "flex", alignItems: "center", justifyContent: "center", cursor: "pointer", color: dark ? "#000" : "#fff" },
     iconBtn: { background: "none", border: "none", cursor: "pointer", color: "inherit", display: "flex", alignItems: "center", padding: "4px", borderRadius: "4px" },
-    barWrap: { position: "fixed", bottom: 0, left: 0, right: 0, background: dark ? "#181818" : "#fff", borderTop: `1px solid ${t.border}`, padding: "0 16px", height: "88px", display: "flex", alignItems: "center", gap: "10px", zIndex: 200 },
-    barLeft: { display: "flex", alignItems: "center", gap: "10px", width: "200px", minWidth: 0, flexShrink: 0 },
+    barWrap: { position: "fixed", bottom: 0, left: 0, right: 0, background: dark ? "#181818" : "#fff", borderTop: `1px solid ${t.border}`, padding: "0 12px", height: "88px", display: "flex", alignItems: "center", gap: "8px", zIndex: 200, width: "100%", boxSizing: "border-box", overflow: "hidden" },
+    barLeft: { display: "flex", alignItems: "center", gap: "8px", minWidth: 0, flexShrink: 1, overflow: "hidden", maxWidth: "40%" },
     barMiniArt: { width: "46px", height: "46px", borderRadius: "4px", objectFit: "cover", flexShrink: 0, background: t.hover },
     barCenter: { flex: 1, display: "flex", flexDirection: "column", alignItems: "center", gap: "5px", minWidth: 0 },
-    barRight: { display: "flex", alignItems: "center", gap: "8px", width: "150px", justifyContent: "flex-end", flexShrink: 0, color: t.sub },
+    barRight: { display: "flex", alignItems: "center", gap: "8px", justifyContent: "flex-end", flexShrink: 0, color: t.sub },
     rowItem: (active) => ({ display: "flex", alignItems: "center", gap: "12px", padding: "8px 10px", borderRadius: "4px", cursor: "pointer", background: active ? (dark ? "#282828" : "#e8f5e9") : "transparent", transition: "background 0.15s" }),
   };
 
@@ -270,7 +270,7 @@ export default function App() {
         input[type=range]{-webkit-appearance:none;height:4px;border-radius:2px;background:${dark?"#535353":"#d0d0d0"};outline:none}
         input[type=range]::-webkit-slider-thumb{-webkit-appearance:none;width:12px;height:12px;border-radius:50%;background:${dark?"#fff":"#121212"};cursor:pointer}
         input[type=range]:hover::-webkit-slider-thumb{background:#1db954}
-        @media(max-width:580px){.bar-right{display:none!important}.bar-left{width:140px!important}}
+        @media(max-width:580px){.bar-right{display:none!important}.bar-left{max-width:50%!important}}
       `}</style>
 
       {/* Topbar */}
