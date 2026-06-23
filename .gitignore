@@ -1,0 +1,15 @@
+node_modules
+.next
+.env
+.env.local
+.DS_Store
+*.log
+user
+auth
+pnpm-workspace.yaml
+package-lock.json
+.cache
+.tokoptero
+.npm
+.git
+.gitconfig
